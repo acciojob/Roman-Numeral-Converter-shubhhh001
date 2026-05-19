@@ -9,7 +9,37 @@ function convertToRoman(num) {
       6:['I', 1]
     };
 
-  //your code here
+  let result = '';
+
+    // Special roman values
+    const special = {
+        900: 'CM',
+        400: 'CD',
+        90: 'XC',
+        40: 'XL',
+        9: 'IX',
+        4: 'IV'
+    };
+
+    for (let value in special) {
+        while (num >= value) {
+            result += special[value];
+            num -= value;
+        }
+    }
+
+    for (let key in obj) {
+        let symbol = obj[key][0];
+        let value = obj[key][1];
+
+        while (num >= value) {
+            result += symbol;
+            num -= value;
+        }
+    }
+
+    return result;
+}
 
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
